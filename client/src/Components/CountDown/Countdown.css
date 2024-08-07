@@ -1,0 +1,27 @@
+@keyframes fadeInOut {
+    0%, 100% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.5);
+    }
+  }
+  
+  @keyframes colorChange {
+    0% { color: #ff6b6b; }
+    33% { color: #f6d365; }
+    66% { color: #000000; }
+    100% { color: #48fb63; }
+  }
+  
+  .countdown {
+    font-size: 120px;
+    font-weight: bold;
+    text-align: center;
+    margin: 50px 0;
+    animation: fadeInOut 1s infinite, colorChange 3s linear infinite;
+    
+  }
+  
