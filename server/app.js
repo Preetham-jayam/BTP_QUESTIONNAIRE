@@ -10,7 +10,7 @@ const mongoose=require('mongoose');
 const User=require('./models/User');
 const auth =require('./middleware/auth');
 const corsOptions = {
-    origin: ['http://localhost:3000'],
+    origin: ['http://localhost:3000','https://btp-questionnaire-app.vercel.app'],
   };
   
 app.use(cors(corsOptions));
