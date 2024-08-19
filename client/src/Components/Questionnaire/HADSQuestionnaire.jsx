@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 import './Questionnaire.css';
 import Countdown from '../CountDown/Countdown';
+import { BASE_URL } from '../../constants';
 const questions = [
   { question: 'I feel tense or "wound up"', options: ['Most of the time', 'A lot of the time', 'From time to time, occasionally', 'Not at all'] },
   { question: 'I still enjoy the things I used to enjoy', options: ['Definitely as much', 'Not quite so much', 'Only a little', 'Hardly at all'] },
@@ -99,7 +100,7 @@ const HADSQuestionnaire = () => {
       const anxietyLevel = getAnxietyDepressionLevel(score);
       setResult({ score, anxietyLevel });
 
-      const response = await axios.post('http://localhost:5003/submit-hads', {
+      const response = await axios.post(`${BASE_URL}/submit-hads`, {
         userId,
         responses,
         score

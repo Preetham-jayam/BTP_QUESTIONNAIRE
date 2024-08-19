@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 import Countdown from '../CountDown/Countdown';
 import './Questionnaire.css';
+import { BASE_URL } from '../../constants';
 
 const questions = [
   { question: 'Sadness', options: ['I do not feel sad.', 'I feel sad much of the time.', 'I am sad all the time.', 'I am so sad or unhappy that I can’t stand it.'] },
@@ -65,7 +66,7 @@ const BDIQuestionnaire = () => {
       const depressionLevel = getDepressionLevel(score);
       setResult({ score, depressionLevel });
 
-      const response = await axios.post('http://localhost:5003/submit-bdi', {
+      const response = await axios.post(`${BASE_URL}/submit-bdi`, {
         userId,
         responses,
         score

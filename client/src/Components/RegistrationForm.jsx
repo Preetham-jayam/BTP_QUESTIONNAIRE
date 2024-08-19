@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
+import { BASE_URL } from '../constants';
 const RegistrationForm = () => {
     const navigate=useNavigate();
     const [formData, setFormData] = useState({
@@ -23,7 +24,7 @@ const RegistrationForm = () => {
         e.preventDefault();
         if (validateForm()) {
             try {
-                const response = await axios.post('http://localhost:5003/register', formData);
+                const response = await axios.post(`${BASE_URL}/register`, formData);
                 toast.success("Registered Successfully");
                 console.log(response.data); 
                 setFormData({

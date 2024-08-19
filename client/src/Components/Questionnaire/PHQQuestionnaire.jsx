@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 import './Questionnaire.css';
 import Countdown from '../CountDown/Countdown';
+import { BASE_URL } from '../../constants';
 
 const questions = [
   { question: 'Little interest or pleasure in doing things', options: ['Not at all', 'Several days', 'More than half the days', 'Nearly every day'] },
@@ -54,7 +55,7 @@ const Questionnaire = () => {
       const score = calculateScore(responses);
       const depressionLevel = getDepressionLevel(score);
       setResult({ score, depressionLevel });
-      const response = await axios.post('http://localhost:5003/submit-phq9', {
+      const response = await axios.post(`${BASE_URL}/submit-phq9`, {
         userId,
         responses,
       }, {

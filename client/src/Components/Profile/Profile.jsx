@@ -6,6 +6,8 @@ import {
   LineChart, Line, Legend
 } from 'recharts';
 import './Profile.css';
+import { BASE_URL } from '../../constants';
+
 
 const getDepressionLevel = (score) => {
   if (score >= 20) return 'Severe Depression';
@@ -22,7 +24,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchSubmissions = async () => {
       try {
-        const response = await axios.get(`http://localhost:5003/users/${user.userId}/submissions`, {
+        const response = await axios.get(`${BASE_URL}/users/${user.userId}/submissions`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         console.log('Fetched submissions:', response.data);

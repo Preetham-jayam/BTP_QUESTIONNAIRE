@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { ReactComponent as UserIcon } from './brain-solid.svg'; 
 import { useDispatch } from 'react-redux';
 import { login } from '../../AuthSlice';
+import { BASE_URL } from '../../constants';
 const LoginForm = () => {
     const navigate=useNavigate();
     const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const LoginForm = () => {
         e.preventDefault();
         if (validateForm()) {
             try {
-                const response = await axios.post('http://localhost:5003/login', formData);
+                const response = await axios.post(`${BASE_URL}/login`, formData);
                 const { userId, email, token,user } = response.data;
                 console.log(response.data); 
                 localStorage.setItem('btp_token', response.data.token);
