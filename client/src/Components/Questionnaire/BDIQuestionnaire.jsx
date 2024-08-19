@@ -83,9 +83,12 @@ const BDIQuestionnaire = () => {
   return (
     <div className="questionnaire-container">
       {showStartButton ? (
+        <div style={{display:'flex',flexDirection:'column'}}>
+          <h1>Beck Depression Inventory questionnaire</h1>
         <button className='start-btn' onClick={() => { setShowStartButton(false); setShowCountdown(true); }}>
           Start BDI Questionnaire
         </button>
+        </div>
       ) : showCountdown ? (
         <Countdown onComplete={() => setShowCountdown(false)} />
       ) : result ? (

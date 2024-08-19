@@ -72,9 +72,12 @@ const Questionnaire = () => {
   return (
     <div className="questionnaire-container">
       {showStartButton ? (
+        <div style={{display:'flex',flexDirection:'column'}}>
+        <h1>Patient health questionnaire</h1>
         <button className='start-btn' onClick={() => { setShowStartButton(false); setShowCountdown(true); }}>
           Start PHQ9 Questionnaire
         </button>
+        </div>
       ): showCountdown ? (
         <Countdown onComplete={() => setShowCountdown(false)} />
       ) : result ? (

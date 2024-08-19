@@ -3,8 +3,9 @@
     margin: 2rem auto;
     padding: 2rem;
     background: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(29, 9, 9, 0.1);
     border-radius: 10px;
+    margin-bottom: 2rem;
   }
   
   .user-info {
