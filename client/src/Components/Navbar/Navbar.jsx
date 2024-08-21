@@ -16,13 +16,16 @@ const Navbar = () => {
         navigate('/');
     };
 
+    const isAdmin=user.user.isAdmin ? true:false;
+
     return (
         <nav className="navbar">
             <div className="navbar-logo">
                 <Link to="/" className="nav-link">BTP S2024 AB02</Link>
             </div>
 
-            <ul className="navbar-nav">
+            {isAdmin ? <>
+                <ul className="navbar-nav">
                 <li className="nav-item">
                     <Link to="/" className="nav-link">Home</Link>
                 </li>
@@ -36,6 +39,22 @@ const Navbar = () => {
                         </li>
                     </>
                 )}
+                {token && (
+                    <>
+                        <li className="nav-item">
+                            <span className="nav-link"><Link to='/admin' className="nav-link">Welcome {user.user.name}</Link></span>
+                        </li>
+                        <li className="nav-item">
+                            <button className="logout" onClick={handleLogout}>Logout</button>
+                        </li>
+                    </>
+                )}
+            </ul>
+            </>:<>
+            <ul className="navbar-nav">
+                <li className="nav-item">
+                    <Link to="/admin" className="nav-link">Home</Link>
+                </li>
                 {token && (
                     <>
                         <li className="nav-item">
@@ -56,6 +75,9 @@ const Navbar = () => {
                     </>
                 )}
             </ul>
+            </>}
+
+            
         </nav>
     );
 };

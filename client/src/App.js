@@ -12,6 +12,8 @@ import PHQQuestionnaire from "./Components/Questionnaire/PHQQuestionnaire";
 import HADSQuestionnaire from "./Components/Questionnaire/HADSQuestionnaire";
 import BDIQuestionnaire from "./Components/Questionnaire/BDIQuestionnaire";
 import Profile from "./Components/Profile/Profile";
+import AdminProfile from "./Components/Admin/AdminProfile";
+import AdminUser from "./Components/Admin/AdminUser";
 function App() {
   return (
     <>
@@ -27,6 +29,9 @@ function App() {
               <Route path='/hadsquestionnaire' element={<HADSQuestionnaire/>}/>
               <Route path='/bdiquestionnaire' element={<BDIQuestionnaire/>}/>
               <Route path='/profile' element={<Profile/>}/>
+              <Route path='/admin' element={<AdminProfile/>}/>
+              <Route path='/admin/user/:userId' element={<AdminUser/>}/>
+
             </Routes>
           </main>
         </Router>

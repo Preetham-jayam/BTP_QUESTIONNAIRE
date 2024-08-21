@@ -196,6 +196,34 @@ app.get('/users/:userId/submissions', auth, async (req, res) => {
     }
 });
 
+app.get('/admin/users',async (req,res)=>{
+  try {
+    const users=await User.find({email:{$ne:'admin@gmail.com'}});
+    res.status(200).json({users});
+  } catch (error) {
+    console.error('Error fetching users:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+app.get('/admin/user/:userId', async (req, res) => {
+  try {
+      const user = await User.findById(req.params.userId);
+      if (!user) {
+          return res.status(404).json({ message: 'User not found' });
+      }
+
+      const submissions = user.questionnaires.reduce((acc, q) => {
+          acc[q.name] = q.submissions;
+          return acc;
+      }, {});
+      console.log(submissions);
+      res.status(200).json({ user,submissions });
+  } catch (error) {
+      console.error('Error fetching user submissions:', error);
+      res.status(500).json({ message: 'Server Error' });
+  }
+});
 
 mongoose
   .connect("mongodb+srv://nagapreethamj21:preetham@cluster0.jhy2xxy.mongodb.net/BTP")

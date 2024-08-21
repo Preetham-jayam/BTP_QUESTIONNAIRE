@@ -35,7 +35,8 @@ const LoginForm = () => {
                     email: '',
                     password: ''
                 });
-                navigate('/');
+                if(user.isAdmin) navigate('/admin');
+                else navigate('/');
             } catch (error) {
                 console.error('Login failed', error);
                 if (error.response && error.response.data) {
