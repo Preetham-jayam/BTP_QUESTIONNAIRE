@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link,useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../AuthSlice';
 
 const Navbar = () => {
     const dispatch = useDispatch();
-    const navigate=useNavigate();
+    const navigate = useNavigate();
     const { user, token } = useSelector((state) => state.auth);
 
     const handleLogout = () => {
@@ -16,7 +16,7 @@ const Navbar = () => {
         navigate('/');
     };
 
-    const isAdmin=user.user.isAdmin ? true:false;
+    const isAdmin = user?.user?.isAdmin || false;
 
     return (
         <nav className="navbar">
@@ -24,12 +24,12 @@ const Navbar = () => {
                 <Link to="/" className="nav-link">BTP S2024 AB02</Link>
             </div>
 
-            {isAdmin ? <>
-                <ul className="navbar-nav">
+            <ul className="navbar-nav">
                 <li className="nav-item">
                     <Link to="/" className="nav-link">Home</Link>
                 </li>
-                {!token && (
+
+                {!token ? (
                     <>
                         <li className="nav-item">
                             <Link to="/login" className="nav-link">Login</Link>
@@ -38,46 +38,40 @@ const Navbar = () => {
                             <Link to="/register" className="nav-link">Register</Link>
                         </li>
                     </>
-                )}
-                {token && (
+                ) : (
                     <>
-                        <li className="nav-item">
-                            <span className="nav-link"><Link to='/admin' className="nav-link">Welcome {user.user.name}</Link></span>
-                        </li>
-                        <li className="nav-item">
-                            <button className="logout" onClick={handleLogout}>Logout</button>
-                        </li>
+                        {isAdmin ? (
+                            <>
+                                <li className="nav-item">
+                                    <Link to='/admin' className="nav-link">Welcome {user?.user?.name}</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <button className="logout" onClick={handleLogout}>Logout</button>
+                                </li>
+                            </>
+                        ) : (
+                            <>
+    
+                                <li className="nav-item">
+                                    <Link to='/profile' className="nav-link">Welcome {user?.user?.name}</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to="/phq9questionnaire" className="nav-link">PHQ9</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to="/bdiquestionnaire" className="nav-link">BDI</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to="/hadsquestionnaire" className="nav-link">HADS</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <button className="logout" onClick={handleLogout}>Logout</button>
+                                </li>
+                            </>
+                        )}
                     </>
                 )}
             </ul>
-            </>:<>
-            <ul className="navbar-nav">
-                <li className="nav-item">
-                    <Link to="/admin" className="nav-link">Home</Link>
-                </li>
-                {token && (
-                    <>
-                        <li className="nav-item">
-                            <span className="nav-link"><Link to='/profile' className="nav-link">Welcome {user.user.name}</Link></span>
-                        </li>
-                        <li className="nav-item">
-                                 <Link to="/phq9questionnaire" className="nav-link">PHQ9</Link>
-                        </li>
-                        <li className="nav-item">
-                                 <Link to="/bdiquestionnaire" className="nav-link">BDI</Link>
-                        </li>
-                        <li className="nav-item">
-                                 <Link to="/hadsquestionnaire" className="nav-link">HADS</Link>
-                        </li>
-                        <li className="nav-item">
-                            <button className="logout" onClick={handleLogout}>Logout</button>
-                        </li>
-                    </>
-                )}
-            </ul>
-            </>}
-
-            
         </nav>
     );
 };
