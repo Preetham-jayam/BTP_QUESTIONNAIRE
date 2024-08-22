@@ -15,12 +15,14 @@ const LoginForm = () => {
     });
 
     const [errors, setErrors] = useState({});
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = async (e) => {
+        setLoading(true);
         e.preventDefault();
         if (validateForm()) {
             try {
@@ -44,6 +46,8 @@ const LoginForm = () => {
                 } else {
                     setErrors({ message: 'Login failed. Please try again.' });
                 }
+            }finally {
+                setLoading(false); 
             }
         }
     };
@@ -95,7 +99,7 @@ const LoginForm = () => {
                 />
                 {errors.password && <p className="error">{errors.password}</p>}
                 {errors.message && <p className="error">{errors.message}</p>}
-                <button type="submit">Login</button>
+                <button type="submit">{loading?"Logging In":"Login"}</button>
             </form>
         </div>
     );
