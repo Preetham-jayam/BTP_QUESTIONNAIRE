@@ -4,6 +4,7 @@ import axios from 'axios';
 import './Questionnaire.css';
 import Countdown from '../CountDown/Countdown';
 import { BASE_URL } from '../../constants';
+import Result from './Result';
 
 const questions = [
   { question: 'Little interest or pleasure in doing things', options: ['Not at all', 'Several days', 'More than half the days', 'Nearly every day'] },
@@ -82,12 +83,7 @@ const Questionnaire = () => {
       ): showCountdown ? (
         <Countdown onComplete={() => setShowCountdown(false)} />
       ) : result ? (
-        <div className='card'>
-        <div className="result-container">
-          <h2>Your Score: {result.score}</h2>
-          <p><b>Depression Level:</b> {result.depressionLevel}</p>
-        </div>
-        </div>
+        <Result score={result.score} depressionLevel={result.depressionLevel} />
       ) : (
         <div className="card">
           <div className="question-container">

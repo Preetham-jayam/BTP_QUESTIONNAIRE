@@ -1,0 +1,151 @@
+.result-card {
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 600px;
+    border-radius: 12px;
+    color: #000;
+    text-align: center;
+    animation-duration: 1.2s;
+    animation-fill-mode: both;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .result-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .result-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .result-card li {
+    margin: 30px 0;
+    font-size: 18px;
+  }
+  
+  .result-card a {
+    color: green;
+    margin: 20px;
+    text-decoration: underline;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: background-color 0.3s, transform 0.4s, box-shadow 0.4s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .result-card a:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.2) rotate(3deg);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  }
+
+  .result-card p {
+    margin: 15px 0;
+    font-size: 1.5em;
+    line-height: 1.5;
+    transition: color 0.4s;
+}
+
+.result-card p:hover {
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.6);
+}
+
+.bold-animation {
+    animation-name: boldFlash;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes boldFlash {
+    0% {
+        font-size: 1.2em;
+        text-shadow: none;
+    }
+    50% {
+        font-size: 1.5em;
+        text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
+    }
+    100% {
+        font-size: 1.2em;
+        text-shadow: none;
+    }
+}
+
+  
+  .severe-animation {
+    background-color: #c62828;
+    animation-name: shake, glow;
+    animation-duration: 1s, 1.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1, infinite;
+  }
+  
+  .moderate-severe-animation {
+    background-color: #d84315;
+    animation-name: pulse, glow;
+    animation-duration: 1.2s, 1.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1, infinite;
+  }
+  
+  .moderate-animation {
+    background-color: #f9a825;
+    animation-name: slideIn, glow;
+    animation-duration: 1s, 1.5s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1, infinite;
+  }
+  
+  .mild-animation {
+    background-color: #43a047;
+    animation-name: fadeIn, glow;
+    animation-duration: 1s, 1.5s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: 1, infinite;
+  }
+  
+  .minimal-animation {
+    background-color: #2e7d32;
+    animation-name: bounceIn, glow;
+    animation-duration: 1.2s, 1.5s;
+    animation-timing-function: ease;
+    animation-iteration-count: 1, infinite;
+  }
+  
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25%, 75% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+  }
+  
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+  
+  @keyframes slideIn {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0); }
+  }
+  
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @keyframes bounceIn {
+    0%, 100% { transform: scale(0.9); }
+    50% { transform: scale(1.1); }
+  }
+  
+  @keyframes glow {
+    0%, 100% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); }
+    50% { box-shadow: 0 0 25px rgba(255, 255, 255, 0.6); }
+  }
+  

@@ -14,6 +14,7 @@ import BDIQuestionnaire from "./Components/Questionnaire/BDIQuestionnaire";
 import Profile from "./Components/Profile/Profile";
 import AdminProfile from "./Components/Admin/AdminProfile";
 import AdminUser from "./Components/Admin/AdminUser";
+import Result from "./Components/Questionnaire/Result";
 function App() {
   return (
     <>
@@ -31,6 +32,7 @@ function App() {
               <Route path='/profile' element={<Profile/>}/>
               <Route path='/admin' element={<AdminProfile/>}/>
               <Route path='/admin/user/:userId' element={<AdminUser/>}/>
+              <Route path='/result' element={<Result/>}/>
 
             </Routes>
           </main>
