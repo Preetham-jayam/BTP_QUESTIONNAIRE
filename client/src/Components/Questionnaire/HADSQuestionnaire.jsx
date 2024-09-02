@@ -4,6 +4,7 @@ import axios from 'axios';
 import './Questionnaire.css';
 import Countdown from '../CountDown/Countdown';
 import { BASE_URL } from '../../constants';
+import Result from './Result';
 const questions = [
   { question: 'I feel tense or "wound up"', options: ['Most of the time', 'A lot of the time', 'From time to time, occasionally', 'Not at all'] },
   { question: 'I still enjoy the things I used to enjoy', options: ['Definitely as much', 'Not quite so much', 'Only a little', 'Hardly at all'] },
@@ -127,12 +128,7 @@ const HADSQuestionnaire = () => {
       ): showCountdown ? (
         <Countdown onComplete={() => setShowCountdown(false)} />
       ) : result ? (
-        <div className='card'>
-          <div className="result-container">
-            <h2>Your Score: {result.score}</h2>
-            <p><b>Anxiety/Depression Level:</b> {result.anxietyLevel}</p>
-          </div>
-        </div>
+        <Result score={result.score} depressionLevel={result.anxietyLevel} />
       ) : (
         <div className="card">
           <div className="question-container">

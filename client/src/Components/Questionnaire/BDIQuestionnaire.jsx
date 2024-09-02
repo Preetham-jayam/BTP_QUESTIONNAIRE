@@ -4,7 +4,7 @@ import axios from 'axios';
 import Countdown from '../CountDown/Countdown';
 import './Questionnaire.css';
 import { BASE_URL } from '../../constants';
-
+import Result from './Result';
 const questions = [
   { question: 'Sadness', options: ['I do not feel sad.', 'I feel sad much of the time.', 'I am sad all the time.', 'I am so sad or unhappy that I can’t stand it.'] },
   { question: 'Pessimism', options: ['I am not discouraged about my future.', 'I feel more discouraged about my future than I used to be.', 'I do not expect things to work out for me.', 'I feel my future is hopeless and will only get worse.'] },
@@ -39,7 +39,7 @@ const calculateScore = (responses) => {
 const getDepressionLevel = (score) => {
   if (score > 40) return 'Extreme depression';
   if (score >= 31) return 'Severe depression';
-  if (score >= 21) return 'Moderate depression';
+  if (score >= 21) return 'Moderate Depression';
   if (score >= 17) return 'Borderline clinical depression';
   if (score >= 11) return 'Mild mood disturbance';
   return 'These ups and downs are considered normal';
@@ -93,12 +93,7 @@ const BDIQuestionnaire = () => {
       ) : showCountdown ? (
         <Countdown onComplete={() => setShowCountdown(false)} />
       ) : result ? (
-        <div className='card'>
-          <div className="result-container">
-            <h2>Your Score: {result.score}</h2>
-            <p><b>Depression Level:</b> {result.depressionLevel}</p>
-          </div>
-        </div>
+        <Result score={result.score} depressionLevel={result.depressionLevel} />
       ) : (
         <div className="card">
           <div className="question-container">
